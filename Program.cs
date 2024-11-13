@@ -1,19 +1,26 @@
-﻿using System;
+using HealthClinic;
+using System;
 using System.Collections.Generic;
+using Microsoft.Data.SqlClient;  // Alteração aqui para usar Microsoft.Data.SqlClient
 
 namespace HealthClinic
 {
-    // Base class for all people involved in the clinic
+    /// <summary>
+    /// Represents a person in the health clinic system.
+    /// </summary>
     public class Person
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Email { get; set; }
-        public string Telephone { get; set; }
-        public string NIF { get; set; }
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public string Address { get; private set; }
+        public string Email { get; private set; }
+        public string Telephone { get; private set; }
+        protected DateTime DateOfBirth { get; private set; }
+        protected string NIF { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Person class.
+        /// </summary>
         public Person(int id, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif)
         {
             ID = id;
@@ -24,50 +31,74 @@ namespace HealthClinic
             Telephone = telephone;
             NIF = nif;
         }
-    }
-
-    // Speciality class to represent medical specialties
-    public class Speciality
-    {
-        public int IDSpeciality { get; set; }
-        public string SpecialityName { get; set; }
-
-        public Speciality(int idSpeciality, string specialityName)
+        // Métodos públicos para acessar DateOfBirth e NIF
+        public DateTime GetDateOfBirth()
         {
-            IDSpeciality = idSpeciality;
-            SpecialityName = specialityName;
+            return DateOfBirth;
+        }
+
+        public string GetNIF()
+        {
+            return NIF;
         }
     }
 
-    // Base Staff class for general staff
+    /// <summary>
+    /// Represents a medical specialty in the health clinic system.
+    /// </summary>
+    public class Specialty
+    {
+        public int ID { get; private set; }
+        public string SpecialtyName { get; private set; }  // Changed to private set
+
+        /// <summary>
+        /// Initializes a new instance of the Specialty class.
+        /// </summary>
+        public Specialty(int id, string specialtyName)
+        {
+            ID = id;
+            SpecialtyName = specialtyName;
+        }
+    }
+
+    /// <summary>
+    /// Represents a staff member in the health clinic system.
+    /// </summary>
     public class Staff : Person
     {
-        public string Role { get; set; }
+        public string Role { get; private set; }
 
-        public Staff(int idStaff, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif, string role)
-            : base(idStaff, name, address, dateOfBirth, email, telephone, nif)
+        /// <summary>
+        /// Initializes a new instance of the Staff class.
+        /// </summary>
+        public Staff(int id, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif, string role)
+            : base(id, name, address, dateOfBirth, email, telephone, nif)
         {
             Role = role;
         }
     }
 
-    // Doctor class inheriting from Staff with doctor-specific attributes
+    /// <summary>
+    /// Represents a doctor in the health clinic system.
+    /// </summary>
     public class Doctor : Staff
     {
-        public Speciality Speciality { get; set; }
-        public decimal ConsultationFee { get; set; }
+        public Specialty Specialty { get; private set; }
+        public decimal ConsultationFee { get; private set; }
 
-        public Doctor(int idDoctor, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif, Speciality speciality, decimal consultationFee)
-            : base(idDoctor, name, address, dateOfBirth, email, telephone, nif, "Doctor")
+        /// <summary>
+        /// Initializes a new instance of the Doctor class.
+        /// </summary>
+        public Doctor(int id, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif, Specialty specialty, decimal consultationFee)
+            : base(id, name, address, dateOfBirth, email, telephone, nif, "Doctor")
         {
-            Speciality = speciality;
+            Specialty = specialty;
             ConsultationFee = consultationFee;
         }
 
-        // Method to prescribe medication during an appointment
         public bool PrescribeMedication(Appointment appointment, Medication medication)
         {
-            if (appointment != null)
+            if (appointment != null && medication != null)
             {
                 appointment.Medications.Add(medication);
                 Console.WriteLine($"{Name} prescribed: {medication.MedicationName} to {appointment.Patient.Name}");
@@ -76,10 +107,9 @@ namespace HealthClinic
             return false;
         }
 
-        // Method to order an exam during an appointment
         public bool OrderExam(Appointment appointment, Exam exam)
         {
-            if (appointment != null)
+            if (appointment != null && exam != null)
             {
                 appointment.Exams.Add(exam);
                 Console.WriteLine($"{Name} ordered exam: {exam.ExamName} for {appointment.Patient.Name}");
@@ -89,69 +119,68 @@ namespace HealthClinic
         }
     }
 
-    // Patient inherits from Person
     public class Patient : Person
     {
-        public Patient(int idPatient, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif)
-            : base(idPatient, name, address, dateOfBirth, email, telephone, nif)
+        public Patient(int id, string name, string address, DateTime dateOfBirth, string email, string telephone, string nif)
+            : base(id, name, address, dateOfBirth, email, telephone, nif)
         {
         }
     }
 
-    // Room class to represent appointment rooms
     public class Room
     {
-        public int RoomNumber { get; set; }
-        public bool IsAvailable { get; set; }
+        public int RoomNumber { get; }
+        protected bool IsAvailable { get; private set; }
 
         public Room(int roomNumber)
         {
             RoomNumber = roomNumber;
             IsAvailable = true;
         }
+
+        public bool CheckAvailability() => IsAvailable;
+        public void MarkUnavailable() => IsAvailable = false;
+        public void MarkAvailable() => IsAvailable = true;
     }
 
-    // Medication class to represent medications
     public class Medication
     {
-        public int IDMedication { get; set; }
-        public string MedicationName { get; set; }
-        public string Dosage { get; set; }
-        public decimal Cost { get; set; }
+        public int ID { get; private set; }
+        public string MedicationName { get; }
+        public string Dosage { get; }
+        public decimal Cost { get; }
 
-        public Medication(int idMedication, string medicationName, string dosage, decimal cost)
+        public Medication(int id, string medicationName, string dosage, decimal cost)
         {
-            IDMedication = idMedication;
+            ID = id;
             MedicationName = medicationName;
             Dosage = dosage;
             Cost = cost;
         }
     }
 
-    // Exam class to represent exams
     public class Exam
     {
-        public int IDExam { get; set; }
-        public string ExamName { get; set; }
-        public decimal Cost { get; set; }
+        public int ID { get; private set; }
+        public string ExamName { get; }
+        public decimal Cost { get; }
 
-        public Exam(int idExam, string examName, decimal cost)
+        public Exam(int id, string examName, decimal cost)
         {
-            IDExam = idExam;
+            ID = id;
             ExamName = examName;
             Cost = cost;
         }
     }
 
-    // Appointment class for scheduling appointments
     public class Appointment
     {
-        public DateTime Date { get; set; }
-        public Doctor Doctor { get; set; }
-        public Patient Patient { get; set; }
-        public Room Room { get; set; }
-        public List<Medication> Medications { get; set; } = new List<Medication>();
-        public List<Exam> Exams { get; set; } = new List<Exam>();
+        public DateTime Date { get; private set; }
+        public Doctor Doctor { get; private set; }
+        public Patient Patient { get; private set; }
+        public Room Room { get; private set; }
+        public List<Medication> Medications { get; } = new List<Medication>();
+        public List<Exam> Exams { get; } = new List<Exam>();
 
         public Appointment(DateTime date, Doctor doctor, Patient patient, Room room)
         {
@@ -161,12 +190,11 @@ namespace HealthClinic
             Room = room;
         }
 
-        // Method to schedule the appointment
         public bool Schedule()
         {
-            if (Room.IsAvailable)
+            if (Room.CheckAvailability())
             {
-                Room.IsAvailable = false;
+                Room.MarkUnavailable();
                 Console.WriteLine($"Appointment scheduled for {Patient.Name} with Dr. {Doctor.Name} in Room {Room.RoomNumber} on {Date}.");
                 return true;
             }
@@ -177,7 +205,6 @@ namespace HealthClinic
             }
         }
 
-        // Method to calculate the total cost for the appointment
         public decimal CalculateTotalCost()
         {
             decimal totalCost = Doctor.ConsultationFee;
@@ -196,27 +223,24 @@ namespace HealthClinic
         }
     }
 
-    // Main Clinic Management System
     public class ClinicManagement
     {
-        private List<Doctor> Doctors = new List<Doctor>();
-        private List<Patient> Patients = new List<Patient>();
-        private List<Room> Rooms = new List<Room>();
-        private List<Appointment> Appointments = new List<Appointment>();
+        private readonly List<Doctor> Doctors = new List<Doctor>();
+        private readonly List<Patient> Patients = new List<Patient>();
+        private readonly List<Room> Rooms = new List<Room>();
+        private readonly List<Appointment> Appointments = new List<Appointment>();
 
-        // Add a doctor
         public bool AddDoctor(Doctor doctor)
         {
             if (doctor != null)
             {
                 Doctors.Add(doctor);
-                Console.WriteLine($"Doctor {doctor.Name} added with specialty {doctor.Speciality.SpecialityName}.");
+                Console.WriteLine($"Doctor {doctor.Name} added with specialty {doctor.Specialty.SpecialtyName}.");
                 return true;
             }
             return false;
         }
 
-        // Add a patient
         public bool AddPatient(Patient patient)
         {
             if (patient != null)
@@ -228,7 +252,6 @@ namespace HealthClinic
             return false;
         }
 
-        // Add a room
         public bool AddRoom(Room room)
         {
             if (room != null)
@@ -240,7 +263,6 @@ namespace HealthClinic
             return false;
         }
 
-        // Schedule an appointment
         public bool ScheduleAppointment(Appointment appointment)
         {
             if (appointment != null && appointment.Schedule())
@@ -252,43 +274,202 @@ namespace HealthClinic
         }
     }
 
-    class Program
+
+    public static class DatabaseHelper
     {
-        static void Main(string[] args)
+        private static readonly string connectionString = "Data Source=.;Initial Catalog=Health_POO;Integrated Security=True";
+
+        public static void SavePerson(Person person)
         {
-            // Initializing clinic management
-            ClinicManagement clinic = new ClinicManagement();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Person (ID, Name, Address, DateOfBirth, Email, Telephone, NIF) VALUES (@ID, @Name, @Address, @DateOfBirth, @Email, @Telephone, @NIF)";
 
-            // Adding specialties
-            Speciality cardiology = new Speciality(1, "Cardiology");
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", person.ID);
+                    cmd.Parameters.AddWithValue("@Name", person.Name);
+                    cmd.Parameters.AddWithValue("@Address", person.Address);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", person.GetDateOfBirth());
+                    cmd.Parameters.AddWithValue("@Email", person.Email);
+                    cmd.Parameters.AddWithValue("@Telephone", person.Telephone);
+                    cmd.Parameters.AddWithValue("@NIF", person.GetNIF());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
-            // Adding doctors
-            Doctor doctor1 = new Doctor(1, "Dr. Alice", "123 Main St", new DateTime(1979, 5, 20), "alice@example.com", "123-456-7890", "123456789", cardiology, 150.00m);
+        public static void SaveSpecialty(Specialty specialty)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Specialty (ID, SpecialtyName) VALUES (@ID, @SpecialtyName)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", specialty.ID);
+                    cmd.Parameters.AddWithValue("@SpecialtyName", specialty.SpecialtyName);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SaveMedication(Medication medication)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Medication (ID, MedicationName, Dosage, Cost) VALUES (@ID, @MedicationName, @Dosage, @Cost)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", medication.ID);
+                    cmd.Parameters.AddWithValue("@MedicationName", medication.MedicationName);
+                    cmd.Parameters.AddWithValue("@Dosage", medication.Dosage);
+                    cmd.Parameters.AddWithValue("@Cost", medication.Cost);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SaveExam(Exam exam)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Exam (ID, ExamName, Cost) VALUES (@ID, @ExamName, @Cost)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", exam.ID);
+                    cmd.Parameters.AddWithValue("@ExamName", exam.ExamName);
+                    cmd.Parameters.AddWithValue("@Cost", exam.Cost);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SaveDoctor(Doctor doctor)
+        {
+            SavePerson(doctor);  // Save the basic person details first
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Doctor (ID, SpecialtyID, ConsultationFee) VALUES (@ID, @SpecialtyID, @ConsultationFee)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", doctor.ID);
+                    cmd.Parameters.AddWithValue("@SpecialtyID", doctor.Specialty.ID);
+                    cmd.Parameters.AddWithValue("@ConsultationFee", doctor.ConsultationFee);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SaveStaff(Staff staff)
+        {
+            SavePerson(staff);  
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Staff (ID, Role) VALUES (@ID, @Role)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", staff.ID);
+                    cmd.Parameters.AddWithValue("@Role", staff.Role);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SavePatient(Patient patient)
+        {
+            SavePerson(patient);  // Save the basic person details first
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Patient (ID) VALUES (@ID)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", patient.ID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public static void SaveAppointment(Appointment appointment)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Appointment (Date, DoctorID, PatientID, RoomNumber) VALUES (@Date, @DoctorID, @PatientID, @RoomNumber)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Date", appointment.Date);
+                    cmd.Parameters.AddWithValue("@DoctorID", appointment.Doctor.ID);
+                    cmd.Parameters.AddWithValue("@PatientID", appointment.Patient.ID);
+                    cmd.Parameters.AddWithValue("@RoomNumber", appointment.Room.RoomNumber);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var clinic = new ClinicManagement();
+
+            // Criar especialidade
+            var cardiology = new Specialty(1, "Cardiology");
+
+
+            // Criar médicos
+            var doctor1 = new Doctor(1, "Dr. Smith", "123 Street", new DateTime(1980, 1, 1), "drsmith@clinic.com", "123456789", "123456789", cardiology, 100);
+            DatabaseHelper.SavePerson(doctor1);
+
+            var doctor2 = new Doctor(2, "Dr. John", "456 Avenue", new DateTime(1985, 2, 1), "drjohn@clinic.com", "987654321", "987654321", cardiology, 150);
+
+            // Adicionar médicos à clínica
             clinic.AddDoctor(doctor1);
+            clinic.AddDoctor(doctor2);
 
-            // Adding rooms
-            Room room1 = new Room(101);
-            clinic.AddRoom(room1);
+            // Criar pacientes
+            var patient1 = new Patient(1, "Alice", "789 Road", new DateTime(1990, 3, 1), "alice@clinic.com", "123123123", "123123123");
+            var patient2 = new Patient(2, "Bob", "101 Street", new DateTime(1992, 4, 1), "bob@clinic.com", "456456456", "456456456");
 
-            // Adding patients
-            Patient patient1 = new Patient(1, "John Doe", "456 Elm St", new DateTime(1994, 3, 15), "johndoe@example.com", "987-654-3210", "987654321");
+            // Adicionar pacientes à clínica
             clinic.AddPatient(patient1);
+            clinic.AddPatient(patient2);
 
-            // Scheduling an appointment
-            Appointment appointment1 = new Appointment(DateTime.Now, doctor1, patient1, room1);
+            // Criar salas
+            var room1 = new Room(101);
+            var room2 = new Room(102);
+
+            // Adicionar salas à clínica
+            clinic.AddRoom(room1);
+            clinic.AddRoom(room2);
+
+            // Agendar consultas
+            var appointment1 = new Appointment(DateTime.Now, doctor1, patient1, room1);
+            var appointment2 = new Appointment(DateTime.Now, doctor2, patient2, room2);
+
             clinic.ScheduleAppointment(appointment1);
-
-            // Adding medication and exam
-            Medication medication1 = new Medication(1, "Aspirin", "100mg", 5.00m);
-            Exam exam1 = new Exam(1, "Blood Test", 50.00m);
-
-            doctor1.PrescribeMedication(appointment1, medication1);
-            doctor1.OrderExam(appointment1, exam1);
-
-            // Calculating total cost
-            decimal totalCost = appointment1.CalculateTotalCost();
-            Console.WriteLine($"Total cost for the appointment: ${totalCost.ToString("F2")}");
+            clinic.ScheduleAppointment(appointment2);
         }
     }
 }
+
 
