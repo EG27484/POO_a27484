@@ -1,0 +1,187 @@
+\doxysection{Health\+Clinic.\+Models.\+Appointment Class Reference}
+\hypertarget{class_health_clinic_1_1_models_1_1_appointment}{}\label{class_health_clinic_1_1_models_1_1_appointment}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a9e51d30dce95bc3502f2d9e2e9fce064}{Appointment}} (int appointment\+ID, \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_patient}{Patient}} patient, \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_doctor}{Doctor}} doctor, string office\+Room)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_health_clinic_1_1_models_1_1_appointment}{Appointment} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a2efbd0f91cd0b0d6700f8036c4c15399}{Add\+Exam}} (\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_exam}{Exam}} exam)
+\begin{DoxyCompactList}\small\item\em Adds an exam to the list of prescribed exams and updates the total cost. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a4467b33abb7601de215932a838559690}{Add\+Medication}} (\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_medication}{Medication}} medication)
+\begin{DoxyCompactList}\small\item\em Adds a medication to the list of prescribed medications and updates the total cost. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_aa42ac01324ed17310f2099c963fc2d35}{Calculate\+Total\+Cost}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the total cost of the appointment based on the doctor\textquotesingle{}s fee, exams, and medications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a42e11c7abcf5e77fb5a6fc4d131f3ba2}{Appointment\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the ID of the appointment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_patient}{Patient}} \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_ad0e3f3877b7336778d8ab5c4eb37fcb3}{Patient}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the patient involved in the appointment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_doctor}{Doctor}} \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_aac51f24cc4dc725c7d8572149d7b62be}{Doctor}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the doctor involved in the appointment. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_ad349b555e76666183c1253c5d828ae33}{Office\+Room}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the office room where the appointment takes place. \end{DoxyCompactList}\item 
+decimal \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a37b35890c1f1bff4655f126484b23134}{Total\+Cost}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the total cost of the appointment. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_exam}{Exam}} $>$ \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_afe7e0a30866049ffc060b6ba3a376f55}{Prescribed\+Exams}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the list of exams prescribed during the appointment. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_medication}{Medication}} $>$ \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_aa38293cbed352301f8b9a130682fc05e}{Prescribed\+Medications}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the list of medications prescribed during the appointment. \end{DoxyCompactList}\item 
+Date\+Time \mbox{\hyperlink{class_health_clinic_1_1_models_1_1_appointment_a7ee5efe00e1b818b3f42e3dc35357279}{Appointment\+Date}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the date of the appointment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a9e51d30dce95bc3502f2d9e2e9fce064}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!Appointment@{Appointment}}
+\index{Appointment@{Appointment}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{Appointment()}{Appointment()}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a9e51d30dce95bc3502f2d9e2e9fce064} 
+Health\+Clinic.\+Models.\+Appointment.\+Appointment (\begin{DoxyParamCaption}\item[{int}]{appointment\+ID}{, }\item[{\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_patient}{Patient}}}]{patient}{, }\item[{\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_doctor}{Doctor}}}]{doctor}{, }\item[{string}]{office\+Room}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \doxylink{class_health_clinic_1_1_models_1_1_appointment}{Appointment} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em appointment\+ID} & The ID of the appointment. \\
+\hline
+{\em patient} & The patient involved in the appointment. \\
+\hline
+{\em doctor} & The doctor involved in the appointment. \\
+\hline
+{\em office\+Room} & The office room where the appointment takes place. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a2efbd0f91cd0b0d6700f8036c4c15399}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!AddExam@{AddExam}}
+\index{AddExam@{AddExam}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{AddExam()}{AddExam()}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a2efbd0f91cd0b0d6700f8036c4c15399} 
+void Health\+Clinic.\+Models.\+Appointment.\+Add\+Exam (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_exam}{Exam}}}]{exam}{}\end{DoxyParamCaption})}
+
+
+
+Adds an exam to the list of prescribed exams and updates the total cost. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em exam} & The exam to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a4467b33abb7601de215932a838559690}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!AddMedication@{AddMedication}}
+\index{AddMedication@{AddMedication}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{AddMedication()}{AddMedication()}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a4467b33abb7601de215932a838559690} 
+void Health\+Clinic.\+Models.\+Appointment.\+Add\+Medication (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_medication}{Medication}}}]{medication}{}\end{DoxyParamCaption})}
+
+
+
+Adds a medication to the list of prescribed medications and updates the total cost. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em medication} & The medication to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_aa42ac01324ed17310f2099c963fc2d35}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!CalculateTotalCost@{CalculateTotalCost}}
+\index{CalculateTotalCost@{CalculateTotalCost}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{CalculateTotalCost()}{CalculateTotalCost()}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_aa42ac01324ed17310f2099c963fc2d35} 
+void Health\+Clinic.\+Models.\+Appointment.\+Calculate\+Total\+Cost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the total cost of the appointment based on the doctor\textquotesingle{}s fee, exams, and medications. 
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a7ee5efe00e1b818b3f42e3dc35357279}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!AppointmentDate@{AppointmentDate}}
+\index{AppointmentDate@{AppointmentDate}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{AppointmentDate}{AppointmentDate}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a7ee5efe00e1b818b3f42e3dc35357279} 
+Date\+Time Health\+Clinic.\+Models.\+Appointment.\+Appointment\+Date\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the date of the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a42e11c7abcf5e77fb5a6fc4d131f3ba2}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!AppointmentID@{AppointmentID}}
+\index{AppointmentID@{AppointmentID}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{AppointmentID}{AppointmentID}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a42e11c7abcf5e77fb5a6fc4d131f3ba2} 
+int Health\+Clinic.\+Models.\+Appointment.\+Appointment\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the ID of the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_aac51f24cc4dc725c7d8572149d7b62be}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!Doctor@{Doctor}}
+\index{Doctor@{Doctor}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{Doctor}{Doctor}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_aac51f24cc4dc725c7d8572149d7b62be} 
+\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_doctor}{Doctor}} Health\+Clinic.\+Models.\+Appointment.\+Doctor\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the doctor involved in the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_ad349b555e76666183c1253c5d828ae33}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!OfficeRoom@{OfficeRoom}}
+\index{OfficeRoom@{OfficeRoom}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{OfficeRoom}{OfficeRoom}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_ad349b555e76666183c1253c5d828ae33} 
+string Health\+Clinic.\+Models.\+Appointment.\+Office\+Room\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the office room where the appointment takes place. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_ad0e3f3877b7336778d8ab5c4eb37fcb3}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!Patient@{Patient}}
+\index{Patient@{Patient}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{Patient}{Patient}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_ad0e3f3877b7336778d8ab5c4eb37fcb3} 
+\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_patient}{Patient}} Health\+Clinic.\+Models.\+Appointment.\+Patient\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the patient involved in the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_afe7e0a30866049ffc060b6ba3a376f55}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!PrescribedExams@{PrescribedExams}}
+\index{PrescribedExams@{PrescribedExams}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{PrescribedExams}{PrescribedExams}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_afe7e0a30866049ffc060b6ba3a376f55} 
+List$<$\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_exam}{Exam}}$>$ Health\+Clinic.\+Models.\+Appointment.\+Prescribed\+Exams\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the list of exams prescribed during the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_aa38293cbed352301f8b9a130682fc05e}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!PrescribedMedications@{PrescribedMedications}}
+\index{PrescribedMedications@{PrescribedMedications}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{PrescribedMedications}{PrescribedMedications}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_aa38293cbed352301f8b9a130682fc05e} 
+List$<$\mbox{\hyperlink{class_health_clinic_1_1_models_1_1_medication}{Medication}}$>$ Health\+Clinic.\+Models.\+Appointment.\+Prescribed\+Medications\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the list of medications prescribed during the appointment. 
+
+\Hypertarget{class_health_clinic_1_1_models_1_1_appointment_a37b35890c1f1bff4655f126484b23134}\index{HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}!TotalCost@{TotalCost}}
+\index{TotalCost@{TotalCost}!HealthClinic.Models.Appointment@{HealthClinic.Models.Appointment}}
+\doxysubsubsection{\texorpdfstring{TotalCost}{TotalCost}}
+{\footnotesize\ttfamily \label{class_health_clinic_1_1_models_1_1_appointment_a37b35890c1f1bff4655f126484b23134} 
+decimal Health\+Clinic.\+Models.\+Appointment.\+Total\+Cost\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the total cost of the appointment. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Models/\mbox{\hyperlink{_appointment_8cs}{Appointment.\+cs}}\end{DoxyCompactItemize}
