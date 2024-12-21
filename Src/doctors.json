@@ -1,0 +1,22 @@
+[
+  {
+    "$id": "1",
+    "Specialty": "pedologist",
+    "ConsultationFee": 35.0,
+    "Name": "Fernando",
+    "Gender": "Female",
+    "ContactInfo": "9108323",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Age": 2023
+  },
+  {
+    "$id": "2",
+    "Specialty": "surgery",
+    "ConsultationFee": 190.0,
+    "Name": "Susana Pereira",
+    "Gender": "Female",
+    "ContactInfo": "9532562",
+    "DateOfBirth": "1999-12-21T00:00:00",
+    "Age": 25
+  }
+]
