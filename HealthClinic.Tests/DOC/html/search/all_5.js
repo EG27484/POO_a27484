@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['testcontext_0',['TestContext',['../class_health_clinic_1_1_tests_1_1_appointment_number_exams_and_meds.html#a2f57aa2f79b04b0c9f0a1ea6ba563fa9',1,'HealthClinic.Tests.AppointmentNumberExamsAndMeds.TestContext'],['../class_health_clinic_1_1_tests_1_1_appointment_total_cost.html#a3c15b5f829898ee8ae73eaa5abb2b112',1,'HealthClinic.Tests.AppointmentTotalCost.TestContext'],['../class_health_clinic_1_1_tests_1_1_patient_nif_and_adress.html#a5d353989ea7750b875c1cef185e7eda1',1,'HealthClinic.Tests.PatientNifAndAdress.TestContext'],['../class_health_clinic_1_1_tests_1_1_person_age.html#a93a3e2adccc9559cc03e37d0c31b0a4c',1,'HealthClinic.Tests.PersonAge.TestContext'],['../class_health_clinic_1_1_tests_1_1_person_name.html#a88c19e3e5123518d7a8087ca4927c74b',1,'HealthClinic.Tests.PersonName.TestContext']]],
+  ['totalcost_5fshouldbecalculatedcorrectly_1',['TotalCost_ShouldBeCalculatedCorrectly',['../class_health_clinic_1_1_tests_1_1_appointment_total_cost.html#adb3785ee332db681e806fe1ced294219',1,'HealthClinic::Tests::AppointmentTotalCost']]]
+];
