@@ -1,0 +1,85 @@
+[
+  {
+    "$id": "1",
+    "AppointmentID": 1,
+    "Patient": {
+      "$id": "2",
+      "MedicalHistory": "cancer",
+      "NIF": "3243254",
+      "Address": "street 4",
+      "Name": "Eva Gomes",
+      "Gender": "Female",
+      "ContactInfo": "532523",
+      "DateOfBirth": "1980-12-21T00:00:00+00:00",
+      "Age": 44
+    },
+    "Doctor": {
+      "$id": "3",
+      "Specialty": "surgery",
+      "ConsultationFee": 190.0,
+      "Name": "Susana Pereira",
+      "Gender": "Female",
+      "ContactInfo": "9532562",
+      "DateOfBirth": "1999-12-21T00:00:00",
+      "Age": 25
+    },
+    "OfficeRoom": "3",
+    "TotalCost": 217.0,
+    "PrescribedExams": [
+      {
+        "$id": "4",
+        "Name": "rx",
+        "Cost": 20.0
+      }
+    ],
+    "PrescribedMedications": [
+      {
+        "$id": "5",
+        "Name": "ibuprofen",
+        "Cost": 5.0
+      },
+      {
+        "$id": "6",
+        "Name": "aspirin",
+        "Cost": 2.0
+      }
+    ],
+    "AppointmentDate": "2024-12-04T16:01:32.846"
+  },
+  {
+    "$id": "7",
+    "AppointmentID": 2,
+    "Patient": {
+      "$id": "8",
+      "MedicalHistory": "healthy",
+      "NIF": "643634f",
+      "Address": "street",
+      "Name": "Glória Art",
+      "Gender": "Female",
+      "ContactInfo": "9542542",
+      "DateOfBirth": "2020-01-28T00:00:00",
+      "Age": 4
+    },
+    "Doctor": {
+      "$id": "9",
+      "Specialty": "ophtalmologist",
+      "ConsultationFee": 50.0,
+      "Name": "John Albuquerque",
+      "Gender": "Male",
+      "ContactInfo": "2534355",
+      "DateOfBirth": "1980-09-22T00:00:00",
+      "Age": 44
+    },
+    "OfficeRoom": "1",
+    "TotalCost": 60.0,
+    "PrescribedExams": [
+      {
+        "$id": "10",
+        "Name": "blood analysis",
+        "Cost": 10.0
+      }
+    ],
+    "PrescribedMedications": [],
+    "AppointmentDate": "2024-11-04T16:01:32.846"
+  }
+]

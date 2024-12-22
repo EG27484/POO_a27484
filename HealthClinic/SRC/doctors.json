@@ -1,0 +1,22 @@
+[
+  {
+    "$id": "1",
+    "Specialty": "surgery",
+    "ConsultationFee": 190.0,
+    "Name": "Susana Pereira",
+    "Gender": "Female",
+    "ContactInfo": "9532562",
+    "DateOfBirth": "1999-12-21T00:00:00",
+    "Age": 25
+  },
+  {
+    "$id": "2",
+    "Specialty": "ophtalmologist",
+    "ConsultationFee": 50.0,
+    "Name": "John Albuquerque",
+    "Gender": "Male",
+    "ContactInfo": "2534355",
+    "DateOfBirth": "1980-09-22T00:00:00",
+    "Age": 44
+  }
+]

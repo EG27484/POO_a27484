@@ -1,0 +1,35 @@
+[
+  {
+    "$id": "1",
+    "MedicalHistory": "cancer",
+    "NIF": "3243254",
+    "Address": "street 4",
+    "Name": "Eva Gomes",
+    "Gender": "Female",
+    "ContactInfo": "532523",
+    "DateOfBirth": "1980-12-21T00:00:00+00:00",
+    "Age": 0
+  },
+  {
+    "$id": "2",
+    "MedicalHistory": "diabetes",
+    "NIF": "325245",
+    "Address": "building A, Barcelos",
+    "Name": "Marco Gomes",
+    "Gender": "Male",
+    "ContactInfo": "952352456",
+    "DateOfBirth": "1984-12-21T00:00:00",
+    "Age": 40
+  },
+  {
+    "$id": "3",
+    "MedicalHistory": "healthy",
+    "NIF": "643634f",
+    "Address": "street",
+    "Name": "Glória Art",
+    "Gender": "Female",
+    "ContactInfo": "9542542",
+    "DateOfBirth": "2020-01-28T00:00:00",
+    "Age": 4
+  }
+]
